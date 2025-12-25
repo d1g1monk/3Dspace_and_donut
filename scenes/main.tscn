@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://c05ea25gyuqg"]
+
+[ext_resource type="Script" uid="uid://b62gm8reehn5f" path="res://scenes/main.gd" id="1_o5qli"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5qli"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0wfyh"]
+sky_material = SubResource("ProceduralSkyMaterial_o5qli")
+
+[sub_resource type="Environment" id="Environment_sugp2"]
+background_mode = 2
+sky = SubResource("Sky_0wfyh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20vo2"]
+albedo_color = Color(0.9596146, 0.4719271, 0.39899638, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.36
+
+[sub_resource type="BoxMesh" id="BoxMesh_ns6u7"]
+material = SubResource("StandardMaterial3D_20vo2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5qli"]
+albedo_color = Color(9.62615e-07, 0.68299896, 0.6865283, 1)
+metallic_specular = 0.71
+roughness = 0.16
+
+[sub_resource type="TorusMesh" id="TorusMesh_0wfyh"]
+material = SubResource("StandardMaterial3D_o5qli")
+outer_radius = 0.871
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_o5qli")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sugp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ns6u7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9356413, 0.35295233, 0, -0.35295233, 0.9356413, -0.059396744, 1.2658238, 2.6929715)
+light_energy = 15.694
+spot_range = 3.4495173
+spot_angle = 37.96875
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9993725, 0.035422873, 0, -0.035422873, 0.9993725, 0, 0.12753975, 3.554912)
+fov = 60.477203
+
+[node name="Donut" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9999247, -0.017366938, -0.00075218384, 0.000997922, 0.028303973, 1.9997997, -0.017354552, -1.9997245, 0.028311566, 0, 0, 0)
+mesh = SubResource("TorusMesh_0wfyh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
