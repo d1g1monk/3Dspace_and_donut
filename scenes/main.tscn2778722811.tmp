@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b62gm8reehn5f" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b42642ppu2dkb" path="res://scenes/player/player.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://cumg1t84jw4qw" path="res://scenes/camera/camera_manager.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://v5abt7s0065p" path="res://scenes/fireball/fireball.tscn" id="3_sugp2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5qli"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -184,10 +184,9 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 
-[node name="CameraManager" parent="." instance=ExtResource("2_sugp2")]
-
-[node name="Camera3D" parent="CameraManager" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.85448605, 0.5194744, 0, -0.5194744, 0.85448605, 0, 1.5899408, 2.4595506)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8943026, 0.44746268, 0, -0.44746268, 0.8943026, 0, 1.9282484, 3.531505)
+fov = 62.589645
 
 [node name="World1" type="Node3D" parent="."]
 
@@ -233,8 +232,11 @@ shape = SubResource("ConcavePolygonShape3D_o5qli")
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 
+[node name="Laser" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.17, 0, 0, 0, -0.16968292, -0.010378218, 0, 0.010378218, -0.16968292, 0, -0.37955102, -1.5020143)
+
 [node name="Projectiles" type="Node3D" parent="."]
 
 [connection signal="shoot_fireball" from="Player" to="." method="_on_player_shoot_fireball"]
 
-[editable path="CameraManager"]
+[editable path="Laser"]
