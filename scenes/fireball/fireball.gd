@@ -7,7 +7,7 @@ var can_move: bool = true
 
 func _ready() -> void:
     GameManager.fireball = self
-
+    $Shoot.play()
          
 func _physics_process(delta: float) -> void:
     if !can_move: return
@@ -22,8 +22,8 @@ func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-   
     if !(area.is_in_group("Rocks")): return
+    $Explosion.play()
     can_move = false
     area.can_move = false
     print("Rock fire collide")

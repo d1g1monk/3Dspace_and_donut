@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://v5abt7s0065p"]
+[gd_scene load_steps=9 format=4 uid="uid://v5abt7s0065p"]
 
 [ext_resource type="Texture2D" uid="uid://cwbougsvfqnig" path="res://graphics/Red_Red.png" id="1_0kheo"]
 [ext_resource type="Script" uid="uid://5tg80x6sjx7h" path="res://scenes/fireball/fireball.gd" id="1_j8ec3"]
+[ext_resource type="AudioStream" uid="uid://chauj2dyhuci0" path="res://audio/laser8.wav" id="3_w2h4j"]
+[ext_resource type="AudioStream" uid="uid://cru0yavdawb0g" path="res://audio/explosion.wav" id="4_ym75t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybpk1"]
 resource_name = "Red"
@@ -62,6 +64,14 @@ transform = Transform3D(1, 0, 0, 0, -4.3711307e-08, 1, 0, -1, -4.3711307e-08, 0,
 shape = SubResource("CapsuleShape3D_0kheo")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_w2h4j")
+volume_db = -11.0
+
+[node name="Explosion" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ym75t")
+volume_db = -12.858
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

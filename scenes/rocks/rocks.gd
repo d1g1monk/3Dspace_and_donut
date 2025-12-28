@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
     
 
 func _on_body_entered(body: Node3D) -> void:
-    if body == GameManager.player:
-        print("HIT")
-
+    if !(body == GameManager.player): return
+    print("HIT")
+    #get_tree().quit()    
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
     queue_free()

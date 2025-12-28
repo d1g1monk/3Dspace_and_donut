@@ -139,6 +139,3 @@ shape = SubResource("CapsuleShape3D_o5qli")
 
 [node name="Muzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32743913, -1.1140538)
-
-[node name="CamStick" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9997359, -0.022983968, 0, 0.022983968, 0.9997359, 0, 0.26302654, -25.934103)
