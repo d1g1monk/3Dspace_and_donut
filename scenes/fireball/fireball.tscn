@@ -43,11 +43,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_01q60")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kheo"]
-radius = 0.6567383
-height = 2.8867188
+radius = 0.53222656
+height = 1.6650391
 
 [node name="Fireball" type="Area3D"]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_j8ec3")
 
 [node name="Red" type="MeshInstance3D" parent="."]
@@ -56,9 +58,10 @@ mesh = SubResource("ArrayMesh_of1pi")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.3711303e-08, 1, 0, -1, -4.3711303e-08, 0, -0.12111881, -0.42375243)
+transform = Transform3D(1, 0, 0, 0, -4.3711307e-08, 1, 0, -1, -4.3711307e-08, 0, -0.09040556, 0.16657962)
 shape = SubResource("CapsuleShape3D_0kheo")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

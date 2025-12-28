@@ -187,7 +187,7 @@ grow_horizontal = 0
 [node name="CameraManager" parent="." instance=ExtResource("2_sugp2")]
 
 [node name="Camera3D" parent="CameraManager" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.85448605, 0.5194744, 0, -0.5194744, 0.85448605, 0, 1.5899408, 2.4595506)
+transform = Transform3D(1, 0, 0, 0, 0.68683386, 0.72681445, 0, -0.7268144, 0.68683386, -0.091965675, 3.5981348, 2.4595506)
 
 [node name="World1" type="Node3D" parent="."]
 
@@ -221,6 +221,8 @@ mesh = SubResource("BoxMesh_ns6u7")
 skeleton = NodePath("../..")
 
 [node name="Rover" type="StaticBody3D" parent="World1"]
+collision_layer = 4
+collision_mask = 7
 
 [node name="rover" type="MeshInstance3D" parent="World1/Rover"]
 transform = Transform3D(35.485676, 0, 20.60675, 0, 41.035, 0, -20.60675, 0, 35.485676, 14.486485, -2.0819955, -20.932932)
@@ -232,9 +234,17 @@ transform = Transform3D(35.485676, 0, 20.60675, 0, 41.035, 0, -20.60675, 0, 35.4
 shape = SubResource("ConcavePolygonShape3D_o5qli")
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97486687, 0, 0)
 
 [node name="Projectiles" type="Node3D" parent="."]
 
+[node name="Timer" type="Node3D" parent="."]
+
+[node name="RockSpawnTimer" type="Timer" parent="Timer"]
+wait_time = 0.4
+autostart = true
+
 [connection signal="shoot_fireball" from="Player" to="." method="_on_player_shoot_fireball"]
+[connection signal="timeout" from="Timer/RockSpawnTimer" to="." method="_on_rock_spawn_timer_timeout"]
 
 [editable path="CameraManager"]

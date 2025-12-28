@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4hj47skpss7c"]
+
+[ext_resource type="Script" uid="uid://p85rgngdf3i5" path="res://scenes/obstacles/obstacles.gd" id="1_6sp18"]
+[ext_resource type="PackedScene" uid="uid://ssv350vs4ksk" path="res://graphics/rock.glb" id="1_d8kyb"]
+[ext_resource type="PackedScene" uid="uid://bwfhkn6vnlmm3" path="res://graphics/rock_crystals.glb" id="2_6sp18"]
+[ext_resource type="PackedScene" uid="uid://d2jd0gxab52yd" path="res://graphics/rover.glb" id="3_0m6gd"]
+[ext_resource type="PackedScene" uid="uid://ba7qy375cvakd" path="res://graphics/satelliteDish_detailed.glb" id="4_jbtjn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n501r"]
+radius = 0.48007622
+
+[node name="Obstacles" type="Area3D"]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0, 0, 0)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_6sp18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07345882, 0.22503984, 0)
+shape = SubResource("SphereShape3D_n501r")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="rock2" parent="Meshes" instance=ExtResource("1_d8kyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.2933335)
+
+[node name="rock_crystals2" parent="Meshes" instance=ExtResource("2_6sp18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9757888, 1.1920929e-07, -1.8011516)
+
+[node name="rover2" parent="Meshes" instance=ExtResource("3_0m6gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5747082, 0, -1.5688388)
+
+[node name="satelliteDish_detailed2" parent="Meshes" instance=ExtResource("4_jbtjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9885435, 0.09748888, -1.5956457)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -22,6 +22,9 @@ GameManager="*res://scenes/game_manager.tscn"
 
 [display]
 
+window/size/viewport_width=2560
+window/size/viewport_height=1440
+window/size/mode=4
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
@@ -65,6 +68,7 @@ shoot={
 
 [layer_names]
 
-3d_render/layer_1="Terrain"
-3d_render/layer_2="Player"
-3d_render/layer_3="Object"
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Player"
+3d_physics/layer_3=" Object"
+3d_physics/layer_4="Weapon"
